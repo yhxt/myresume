@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>我的个人简历</title>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/resume.css'%}" />
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+
+	<script type="text/javascript" src="{% static 'vendors/scrolloverflow.js' %}"></script>
+
+	<script type="text/javascript" src="{% static 'js/jquery.fullPage.js' %}"></script>
+
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors: ['personalIntroduce', 'projectExperience1', 'projectExperience2', 'projectExperience3'],
+				scrollBar: true,
+
+                scrollingSpeed: 500,
+                navigation: true,
+				navigationPosition: 'right',
+				navigationTooltips: ['fullPage.js', 'Powerful', 'Amazing', 'Simple'],
+
+                onLeave: function(index, nextIndex, direction){
+				    var $personal = $('#personal_introduce, #personal_skill');
+				    var $one_duty = $('#work_one_introduce, #work_one_duty');
+				    var $one_struct = $('#work_one_struct');
+				    var $two_view = $('#work_two_introduce, #work_two_struct, #work_two_duty');
+				    var $three_view = $('#work_three_introduce, #work_three_struct, #work_three_duty');
+				    var element = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend'
+
+                    if (nextIndex == 1){
+                        $personal.addClass('animated zoomIn').one(element, function () {
+                            $personal.removeClass('animated zoomIn');
+                        });
+                    }else if(nextIndex == 2){
+                        $one_duty.addClass('animated slideInLeft').one(element, function () {
+                            $one_duty.removeClass('animated slideInLeft');
+                        });
+                        $one_struct.addClass('animated slideInRight').one(element, function () {
+                            $one_struct.removeClass('animated slideInRight');
+                        });
+                    }else if(nextIndex == 3){
+                        $two_view.addClass('animated pulse').one(element, function () {
+                            $two_view.removeClass('animated pulse');
+                        });
+                    }else if(nextIndex == 4){
+                        $three_view.addClass('animated lightSpeedIn').one(element, function () {
+                            $three_view.removeClass('animated lightSpeedIn');
+                        });
+                    }
+                },
+                afterLoad: function(anchorLink, index){
+                    var element = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend'
+                    var $personal = $('#personal_introduce, #personal_skill');
+                    if (index == 1){
+                        $personal.addClass('animated zoomIn').one(element, function () {
+                            $personal.removeClass('animated zoomIn');
+                        });
+                    }
+                }
+			});
+		});
+	</script>
+
+</head>
+<body>
+
+<div id="fullpage">
+	<div class="section " id="section0">
+        <div class="center">
+            <div id="personal_introduce">
+                <h3>个人简介</h3>
+                <div><strong>姓名:</strong>yhxt | <strong>性别:</strong>男</div>
+                <div><strong>手机号:</strong>15888888888 | <strong>邮箱:</strong>yhxt1988@163.com</div>
+                <div><strong>工作经验:</strong>7年 | <strong>居住地:</strong>西安 | <strong>学校:</strong>西安邮电学院</div>
+            </div>
+        </div>
+        <div class="center">
+            <div id="personal_skill">
+                    <h3>自我评价</h3>
+                    <div>1.为人处世谦逊，做事积极认真，富有责任心，注重团队合作，跟朋友同事都能和睦融洽的相处。</div>
+                    <div>2.有丰富的软件产品的测试和维护经验。</div>
+                    <div>3.对软件前期需求收集，客户沟通，后期的产品测试，产品维护比较有工作经验。</div>
+                    <div>4.熟练掌握对无线市内分布系统设备的安装和调试，以及无线干放等通讯设备的开通及调试。精通WLAN AC，AP的安装调试等。</div>
+                    <div>5.熟悉测试的流程和测试的技巧，能合理分析判断bug以及可能产生的条件。</div>
+                    <div>6.从2012年3月开始在紫光软件系统有限公司从事陕西联通公文办公系统工作至今，积累了丰富的处理异常文件，异常信息以及日常公文系统和服务器监测维护的经验。对系统上线功能测试用例，测试流程技巧等熟练掌握。</div>
+                    <div>&nbsp;</div>
+                    <div>blog:http://yhxt.com；</div>
+                    <div>GitHub:https://github.com/yhxt；</div>
+                </div>
+            </div>
+	</div>
+
+	<div class="section" id="section1">
+        <div class="center">
+            <div id="work_one_introduce">
+                <h3>工作经历</h3>
+                <p><strong>2012.3 - 至今</strong></p>
+                <p><strong>紫光软件系统有限公司：</strong>系统工程师 </p>
+            </div>
+            <div id="work_one_struct">
+                <h5>工作描述:</h5>
+                <div>1.从2012年3月份开始，任职于紫光软件系统有限公司通用产品事业部/联通分省项目部/陕西项目部，主要从事与陕西联通长期合作，对门户和公文系统的建设优化，异常文件处理，以及公文系统电子印章的制作日常的维护建设工作。</div>
+                <div>2.2012年全国联通推广实施云门户，担任陕西联通云门户实施顾问，负责陕西联通各个系统对云门户接口的集成，后期的云门户上线，老门户下线等工作。</div>
+                <div>3.2013年参加陕西联通，云南联通domino 6.5到8.5的系统升级工作。</div>
+                <div>4.2014年5月份参加云南联通项目组的机房搬迁，数据备份，待办待阅清理等工作。</div>
+                <div>5.项目上线实施，云门户，domino办公系统上线，办公系统前台页面版本改造上线，domino8.5升级，电子印章系统，绩效考核管理系统，请假管理系统，会议系统，法律风险管控系统，督办推进平台等。</div>
+            </div>
+{#            <div id="work_one_duty">#}
+{#                <h4>项目负责:</h4>#}
+{#                <div>1、xxxx。</div>#}
+{#                <div>2、xxxx。</div>#}
+{#                <div>3、xxxx。</div>#}
+{#                <div>4、xxxx。</div>#}
+{#                <div>5、xxxx。</div>#}
+{#            </div>#}
+            <div id="work_one_introduce">
+                <p><strong>2011.3 - 2012.2</strong></p>
+            </div>
+            <div id="work_one_struct">
+                <h5>工作描述:</h5>
+                <div>1.负责公司对移动联通电信三大运营商室内分系统的设计督导工作。</div>
+                <div>2.对日常告警处理，以及干放RU等设备的安装调试。</div>
+                <div>3.汉中理工学院宿舍教学楼市分设计督导，渭南移动农村无线宽带试点项目的安装调试。</div>
+                <div>4.日常3大运营商分配给各个厂家的日常巡检维护工作。</div>
+            </div>
+        </div>
+	</div>
+
+	<div class="section" id="section2">
+		<div class="center">
+            <div id="work_two_introduce">
+                <h3>项目经验</h3>
+                <p><strong>紫光软件系统有限公司</strong></p>
+            </div>
+            <div id="work_two_struct">
+                <h4>责任描述:</h4>
+                <div>1.负责陕西联通和云南联通公文系统日常维护，应急处理。功能模块的变更问题处理。</div>
+                <div>2.每年新报项目的实施跟进，测试用例，更能模块测试验收。</div>
+                <div>3.陕西联通公文系统的改造升级，项目上线实施，云门户，domino办公系统上线，办公系统前台页面版本改造上线，domino8.5升级，电子印章系统，绩效考核管理系统，请假管理系统，会议系统，法律风险管控系统，督办推进平台等。</div>
+                <div>4.domino系统的升级，数据备份迁移。</div>
+            </div>
+{#            <div id="work_two_duty">#}
+{#                <h4>项目负责:</h4>#}
+{#                <div>1、xxxx。</div>#}
+{#                <div>2、xxxx。</div>#}
+{#                <div>3、xxxx。</div>#}
+{#            </div>#}
+            <div id="work_two_introduce">
+                <p><strong>邦讯技术股份有限公司</strong></p>
+            </div>
+            <div id="work_two_struct">
+                <h4>责任描述:</h4>
+                <div>1.掌握各种测试仪器的使用。</div>
+                <div>2.信号的室内无线覆盖系统。</div>
+                <div>3.驻波仪，路测软件的熟练使用。</div>
+                <div>4.工程技术 室分的谈楼，督导，开通，调测以及故障的处理和维护，WLAN AC，AP的安装调试等。</div>
+            </div>
+        </div>
+        <div class="div_session">
+            <img id="work_two_img_one"/>
+            <img id="work_two_img_two"/>
+        </div>
+	</div>
+
+    <div class="section" id="section3">
+		<div class="center">
+            <div id="work_three_introduce">
+                <h3>教育经历</h3>
+                <p>2008/09 - 2011/06   <strong>西安邮电学院</strong></p>
+                <p><strong>项目描述:</strong>你要描述的样子。</p>
+            </div>
+            <div id="work_three_struct">
+                <h4>培训经历:</h4>
+                <div>培训课程：微机装备调试与维修<br>
+                    培训地点：西安邮电大学南校区<br>
+                    培训描述：对台式电脑的拆卸与组装。首先是在拆卸台式电脑主机的时候认识并熟悉其硬件设备，并了解其的作用，最后是在组装的时候更进一步的知道其在计算机主机所处的位置，为以后电脑的维护打下坚定的基础。
+                </div>
+            </div>
+{#            <div id="work_three_duty">#}
+{#                <h4>项目负责:</h4>#}
+{#                <div>1、xxxx。</div>#}
+{#                <div>2、xxxx。</div>#}
+{#                <div>3、xxxx。</div>#}
+{#                <div>4、xxxx。</div>#}
+{#                <div>5、xxxx。</div>#}
+            </div>
+        </div>
+
+	</div>
+</div>
+
+</body>
+</html>
